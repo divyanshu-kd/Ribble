@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Home</title>
+</head>
+<body bgcolor="white">    
+    <div class="flex flex-col items-center m-10 p-10">
+        <div class="flex flex-col">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-10">
+                    <h1 class="mb-4 text-3xl font-bold">Welcome! Let's create your profile</h1>
+                    <p class="text-gray-400 text-sm font-bold">Let others get to know you better! You can do these later</p>
+                </div>
+                <div class="flex flex-col">
+                    <h3 class="mb-4 font-bold">Add an avatar</h3>
+                    <div class="flex flex-row items-center mb-14">
+                        <img src="" class="rounded-full border-2 border-dashed border-gray-400 w-40 h-40" id="prof_image" onclick="image()" >
+                        <div class="flex flex-col m-5">
+                            <input class="m-1" id="image_input" type="file" name="avatar" accept="image/*">
+                            <p class="m-1 text-gray-400 text-xs font-bold"> > Or choose one of our defaults</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="mb-6 font-bold">Add your location</h3>
+                    <input class="border-b border-gray-300 w-full font-bold text-sm text-neutral-800" type="text" id="text" name="location">
+                </div>
+                <div>
+                    <input type="submit" class="mt-16 py-2 px-20 rounded-lg bg-pink-500 text-white text-sm font-bold">
+                    <p class="pl-6 m-4 text-xs font-bold text-gray-400">or Press <button>RETURN</button></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function image() {
+            document.getElementById('image_input').click();
+        }
+        // const imageInput = document.getElementById('image_input');
+        // const imageBox = document.getElementById('prof_image');
+
+        // imageInput.addEventListener('change', function(event) {
+        // const uploadedFile = event.target.files[0];
+
+        // if (uploadedFile) {
+        //     const reader = new FileReader();
+        //     reader.onload = function(e) {
+        //     const image = new Image();
+        //     image.src = e.target.result;
+        //     imageBox.innerHTML = ''; // Clear any previous content
+        //     imageBox.appendChild(image);
+        //     }
+
+        //     reader.readAsDataURL(uploadedFile);
+        // }
+        // });
+    </script>
+</body>
+</html>

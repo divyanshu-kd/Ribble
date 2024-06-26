@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- {% load static %} -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>About</title>
+</head>
+<body>
+    <div class="flex flex-row items-center justify-center">
+        <div class="flex flex-col h-screen justify-start bg-gray-200 pr-20">
+            <div class="flex flex-row ml-16 mt-16">
+                <img src= "/media/{{data.avatar}}" class="rounded-full border-2 border-dashed border-gray-400 w-20 h-20 m-4" id="prof_image" onclick="image()" >
+                <div class="flex flex-col mt-8 ml-4">
+                    <p class="text-black-400 text-xl font-bold text-left">{{data.name}}</p>
+                    <p class="text-gray-400 text-sm font-bold text-left">{{data.username}}</p>
+                </div>
+            </div>
+            <div class="ml-20 mt-4">
+                <img src="">
+                <p>{{data.email}}</p>
+            </div>
+            {% if data.location %}
+                <div class="flex flex-row ml-20 mt-4">
+                    <img src="{% static 'location.jpeg' %}" class="h-8 w-8 bg-gray-200">
+                    <p>{{data.location}}</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="flex flex-col items-center justify-center h-screen w-full">
+            <div>
+                <h1 class="font-bold text-3xl mb-4 text-center">What brings you to Ribble?</h1>
+                <p class="text-gray-400 text-sm font-bold text-center">Select the options that best describe you. Don't worry, you can explore other options later</p>
+            </div>
+            <div class="flex flex-row justify-evenly mt-20 mb-12">
+                <div class="flex flex-col items-center border rounded-xl p-2 m-3 w-60 h-68">
+                    <img src="{% static 'designer.jpg' %}" class="rounded-full border-2 border border-gray-400 w-40 h-40 " id="image">
+                    <p class="text-center font-bold m-2">I'm a designer looking to share my work</p>
+                    <input type="checkbox" id="checkbox">
+                </div>
+                <div class="flex flex-col items-center border rounded-xl p-2 m-3 w-60 h-68">
+                    <img src="{% static 'designer2.jpg' %}" class="rounded-full border-2 border border-gray-400 w-40 h-40">
+                    <p class="text-center font-bold m-2">I'm looking to hire a designer</p>
+                    <input type="checkbox">
+                </div>
+                <div class="flex flex-col items-center border rounded-xl p-2 m-3 w-60 h-68">
+                    <img src="{% static 'designer3.jpg' %}" class="rounded-full border-2 border border-gray-400 w-40 h-40">
+                    <p class="text-center font-bold m-2">I'm looking for design inspiration</p>
+                    <input type="checkbox">
+                </div>
+            </div>
+            <div>
+                <p class="mb-4 text-sm font-bold">Anything else? You cam select multiple</p>
+            </div>
+            <div>
+                <button class="py-2 px-20 rounded-lg bg-pink-500 text-white text-sm font-bold">Finish</button>
+                <p class="pl-6 m-4 text-xs font-bold text-gray-400">or Press <button>RETURN</button></p>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        // function 
+        // username - divyanshu, pass - 1234 for admin
+
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                for (const otherCheckbox of checkboxes) {
+                    if (otherCheckbox !== this && otherCheckbox.checked) {
+                        otherCheckbox.checked = false;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
