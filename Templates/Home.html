@@ -18,7 +18,7 @@
                 <div class="flex flex-col">
                     <h3 class="mb-4 font-bold">Add an avatar</h3>
                     <div class="flex flex-row items-center mb-14">
-                        <img src="" class="rounded-full border-2 border-dashed border-gray-400 w-40 h-40" id="prof_image" onclick="image()" >
+                        <img src="" class="rounded-full border-2 border-dashed border-gray-400 w-40 h-40" id="prof_image" >
                         <div class="flex flex-col m-5">
                             <input class="m-1" id="image_input" type="file" name="avatar" accept="image/*">
                             <p class="m-1 text-gray-400 text-xs font-bold"> > Or choose one of our defaults</p>
@@ -37,28 +37,19 @@
         </div>
     </div>
     <script>
-        function image() {
-            document.getElementById('image_input').click();
-        }
-        // const imageInput = document.getElementById('image_input');
-        // const imageBox = document.getElementById('prof_image');
-        // imageInput.addEventListener("change", function(event) {
-        //     e.preventDefault();
-        //     const uploadedFile = event.target.files[0];
-
-        //     if (uploadedFile) {
-        //         const reader = new FileReader();
-        //         reader.onload = function(e) {
-        //         // const image = new Image();
-        //         // image.src = e.target.result;
-        //         // imageBox.innerHTML = ''; // Clear any previous content
-        //         // imageBox.appendChild(image);
-        //         imageBox.src = e.target.result;
-        //         }
-
-        //         // reader.readAsDataURL(uploadedFile);
-        //     }
-        // });
+        // function image() {
+        //     document.getElementById('image_input').click();
+        // }
+        const img = document.querySelector('img')
+        img.addEventListener('click',function (e){
+            document.getElementById('image_input').click()
+        })
+        
+        const input = document.getElementById('image_input')
+        input.addEventListener('change',function (e){
+            console.log(e.target.files[0])
+            img.src = `/${e.target.files[0].name}`
+        })
     </script>
 </body>
 </html>
