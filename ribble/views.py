@@ -22,15 +22,6 @@ def home(request, id):
         # return render(request, 'About.html', {'data':data})
     return render(request, 'Home.html')
 def about(request, id):
-    # try:
-    #     if request.method == "POST":
-    #         user = request.POST['userID']
-    #         pas = request.POST['Password']
-    #     data = details.objects.get(password = pas)
-    #     if data:
-    #         return render(request, 'About.html', context=data)
-            
-    # except:
     data = details.objects.get(id=id)
     return render(request, 'About.html', {'data':data})
 
@@ -62,6 +53,4 @@ def log(request):
                 # return render(request, 'About.html', {'data':data})
                 return redirect(f'/About/{id}')
     return render(request, 'log.html')
-# def Home_(request):
-#     return render(request, 'Home_html')
 
