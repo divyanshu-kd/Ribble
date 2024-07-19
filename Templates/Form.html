@@ -28,8 +28,15 @@
                             <input type="text" class="rounded-md bg-gray-200 h-8 p-4" name="name" required>
                         </div>
                         <div class="font-bold">
-                            <p>Username</p>
-                            <input type="text" class="rounded-md bg-gray-200 h-8 p-4" name="username" required>
+                            <div class="flex flex-row justify-start items-center">
+                                <p>Username</p>
+                                {% if messages %}
+                                    {% for message in messages %}
+                                    <p class="text-xs ml-2 text-red-400" >{{ message }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <input type="text" class="rounded-md bg-gray-200 h-8 p-4" name="username" placeholder="" required>
                         </div>
                     </div>
                     <div class="mb-8">

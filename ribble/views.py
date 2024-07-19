@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from ribble import models
 from .models import details
+from django.contrib import messages
 
 
 # Create your views here.
@@ -28,9 +29,14 @@ def about(request, id):
     # return render(request, 'About.html')
 def form(request):
     if request.method == "POST":
+        username = request.POST['username']
+        user = details.objects.filter(username=username)
+        if user.exists():
+            messages.info(request, 'Username already taken')
+            return redirect('/')
         name = request.POST['name']
         email = request.POST['email']
-        username = request.POST['username']
+        # username = request.POST['username']
         password = request.POST['password']
         terms = request.POST['terms']
         ins = models.details(name=name, username=username, email=email, password=password, terms=terms)
